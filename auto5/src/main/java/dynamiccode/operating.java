@@ -8,32 +8,19 @@ import org.openqa.selenium.JavascriptExecutor;
 
 
 public class operating extends base {
-	public static void takescreenshot(String screenshot_name) {
-	
-		try {
-			takescreenshot(driver, screenshot_name);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+	public static void main(String[] args) throws IOException, InterruptedException {
+	    launchbrowser("chrome");
+	    hiturl("https://www.jeevansathi.com/");
 
-	
-		}}
-	public static void main(String[] args) throws  {
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeAsyncScript("window.scrollBy(0, 650)");
 
-		launchbrowser("chrome");
-		hiturl("https://www.jeevansathi.com/");
-		
-		
-	JavascriptExecutor js = (JavascriptExecutor) driver;
-	js.executeAsyncScript("window.scrollBy(0, 650)");
-	Thread.sleep(3000);
-	takescreenshot("after_scroll");
+	    Thread.sleep(3000);
+	   takescreenshot("newfile2");
 	
 	}
-	private static void mymethod() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 		
 		

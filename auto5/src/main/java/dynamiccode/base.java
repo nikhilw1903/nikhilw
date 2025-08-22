@@ -1,6 +1,7 @@
 package dynamiccode;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.GeckoDriverInfo;
@@ -22,8 +23,11 @@ public class base {
 	public static WebDriver driver;
 
 	public static void launchbrowser(String browser) {
+		//pushnotification
+		ChromeOptions notify =new ChromeOptions();
+		 notify.addArguments("--disable-notifications");
 		if (browser.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(notify);
 
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
@@ -45,17 +49,16 @@ public class base {
 		System.out.println(driver.getTitle());
 	}
 
-	public static void takescreenshot(WebDriver driver, String screenshot_name) throws IOException {
+	public static void takescreenshot(String screenshot_name) throws IOException {
 	
 		        TakesScreenshot tk = (TakesScreenshot) driver;
 		        File source = tk.getScreenshotAs(OutputType.FILE);
 		        File target = new File("./screenshot/" + screenshot_name + ".png");
 		        FileHandler.copy(source, target);
 
-		  }
 	
-	public static void main(String[] args) {
+	}
 
 	}
 
-}
+
